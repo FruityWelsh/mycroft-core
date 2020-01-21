@@ -22,6 +22,13 @@ set -- "${1:-$(</dev/stdin)}" "${@:2}"
 # Enter the Mycroft venv
 source "$DIR/../venv-activate.sh" -q
 
+# Sets var 1 to stdin if no args were given
+set -- ${@:-$(</dev/stdin)}
+
 # Send a message to be spoken
+<<<<<<< HEAD
 data="$@"
 output=$(python -m mycroft.messagebus.send "speak"  "{\"utterance\": \"$data\"}")
+=======
+output=$(python -m mycroft.messagebus.send "speak"  "{\"utterance\": \"$1\"}")
+>>>>>>> c5a9573d37c5e7e71729ff25a5625c46cf88c19e

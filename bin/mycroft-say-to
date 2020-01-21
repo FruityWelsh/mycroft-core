@@ -22,8 +22,16 @@ DIR="$( pwd )"
 source "$DIR/../venv-activate.sh" -q
 
 # Sets var 1 to stdin if no args were given
+<<<<<<< HEAD
 set -- "${1:-$(</dev/stdin)}" "${@:2}"
 
 # Send a message to be spoken
 data="$@"
 output=$(python -m mycroft.messagebus.send "recognizer_loop:utterance"  "{\"utterances\": [\"$data\"], \"lang\": \"en-us\"}")
+=======
+set -- ${@:-$(</dev/stdin)}
+
+
+# Send a message to be spoken
+output=$(python -m mycroft.messagebus.send "recognizer_loop:utterance"  "{\"utterances\": [\"$1\"], \"lang\": \"en-us\"}")
+>>>>>>> c5a9573d37c5e7e71729ff25a5625c46cf88c19e
